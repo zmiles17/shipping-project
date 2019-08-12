@@ -1,12 +1,15 @@
 package com.example.shippingcrudservice.controller;
 
+import com.example.shippingcrudservice.repository.InvoiceRepository;
 import org.junit.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-
-import static org.junit.Assert.*;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 @WebMvcTest(ShippingController.class)
 public class ShippingControllerTest {
+
+    @MockBean
+    InvoiceRepository repository;
 
     @Test
     public void getInvoices() {

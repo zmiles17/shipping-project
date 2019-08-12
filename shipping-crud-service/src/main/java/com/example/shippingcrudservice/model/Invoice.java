@@ -3,7 +3,6 @@ package com.example.shippingcrudservice.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -31,7 +30,7 @@ public class Invoice implements Serializable {
     @Column(name = "surcharge", nullable = false, columnDefinition = "decimal(7,2)")
     private Double surcharge;
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    Set<InvoiceItem> invoiceItems = new HashSet<>();
+    private Set<InvoiceItem> invoiceItems = new HashSet<>();
 
     public Invoice() {
         super();

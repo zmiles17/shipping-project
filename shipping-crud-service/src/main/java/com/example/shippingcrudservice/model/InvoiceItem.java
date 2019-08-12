@@ -1,6 +1,7 @@
 package com.example.shippingcrudservice.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +18,7 @@ public class InvoiceItem implements Serializable {
     private Integer invoiceItemId;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "invoice_id", columnDefinition = "int(11)", nullable = false)
+    @ApiModelProperty(hidden = true)
     private Invoice invoice;
     @Column(name = "item_name", columnDefinition = "varchar(50)", nullable = false)
     private String itemName;

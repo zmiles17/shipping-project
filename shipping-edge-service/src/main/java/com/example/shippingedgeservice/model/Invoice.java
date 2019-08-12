@@ -1,4 +1,128 @@
 package com.example.shippingedgeservice.model;
 
-public class Invoice {
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+public class Invoice implements Serializable {
+    private Integer invoiceId;
+    private Integer customerId;
+    private String shipToZip;
+    private LocalDate purchaseDate;
+    private Double totalCost;
+    private Double salesTax;
+    private Double surcharge;
+    private Set<InvoiceItem> invoiceItems = new HashSet<>();
+
+    public Invoice() {
+        super();
+    }
+
+    public Invoice(Integer invoiceId, Integer customerId, String shipToZip, LocalDate purchaseDate, Double totalCost, Double salesTax, Double surcharge, Set<InvoiceItem> invoiceItems) {
+        this.invoiceId = invoiceId;
+        this.customerId = customerId;
+        this.shipToZip = shipToZip;
+        this.purchaseDate = purchaseDate;
+        this.totalCost = totalCost;
+        this.salesTax = salesTax;
+        this.surcharge = surcharge;
+        this.invoiceItems = invoiceItems;
+    }
+
+    public Invoice(Integer customerId, String shipToZip, LocalDate purchaseDate, Double totalCost, Double salesTax, Double surcharge, Set<InvoiceItem> invoiceItems) {
+        this.customerId = customerId;
+        this.shipToZip = shipToZip;
+        this.purchaseDate = purchaseDate;
+        this.totalCost = totalCost;
+        this.salesTax = salesTax;
+        this.surcharge = surcharge;
+        this.invoiceItems = invoiceItems;
+    }
+
+    public Integer getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(Integer invoiceId) {
+        this.invoiceId = invoiceId;
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getShipToZip() {
+        return shipToZip;
+    }
+
+    public void setShipToZip(String shipToZip) {
+        this.shipToZip = shipToZip;
+    }
+
+    public LocalDate getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public Double getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(Double totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public Double getSalesTax() {
+        return salesTax;
+    }
+
+    public void setSalesTax(Double salesTax) {
+        this.salesTax = salesTax;
+    }
+
+    public Double getSurcharge() {
+        return surcharge;
+    }
+
+    public void setSurcharge(Double surcharge) {
+        this.surcharge = surcharge;
+    }
+
+    public Set<InvoiceItem> getInvoiceItems() {
+        return invoiceItems;
+    }
+
+    public void setInvoiceItems(Set<InvoiceItem> invoiceItems) {
+        this.invoiceItems = invoiceItems;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Invoice invoice = (Invoice) o;
+        return Objects.equals(invoiceId, invoice.invoiceId) &&
+                Objects.equals(customerId, invoice.customerId) &&
+                Objects.equals(shipToZip, invoice.shipToZip) &&
+                Objects.equals(purchaseDate, invoice.purchaseDate) &&
+                Objects.equals(totalCost, invoice.totalCost) &&
+                Objects.equals(salesTax, invoice.salesTax) &&
+                Objects.equals(surcharge, invoice.surcharge) &&
+                Objects.equals(invoiceItems, invoice.invoiceItems);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(invoiceId, customerId, shipToZip, purchaseDate, totalCost, salesTax, surcharge, invoiceItems);
+    }
 }
+

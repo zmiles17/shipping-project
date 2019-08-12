@@ -20,6 +20,7 @@ public class SwaggerConfig {
     public Docket produceApi () {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.shippingcrudservice.controller"))
                 .paths(paths())
